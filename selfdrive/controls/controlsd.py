@@ -108,7 +108,7 @@ class Controls:
     self.is_ldw_enabled = self.params.get_bool("IsLdwEnabled")
 
     # detect sound card presence and ensure successful init
-    sounds_available = HARDWARE.get_sound_card_online()
+    #sounds_available = HARDWARE.get_sound_card_online()
 
     car_recognized = self.CP.carName != 'mock'
 
@@ -159,8 +159,8 @@ class Controls:
 
     self.startup_event = get_startup_event(car_recognized, not self.CP.passive, len(self.CP.carFw) > 0)
 
-    if not sounds_available:
-      self.events.add(EventName.soundsUnavailable, static=True)
+   # if not sounds_available:
+   #   self.events.add(EventName.soundsUnavailable, static=True)
     if not car_recognized:
       self.events.add(EventName.carUnrecognized, static=True)
       if len(self.CP.carFw) > 0:
@@ -751,7 +751,7 @@ class Controls:
       controlsState.alertStatus = current_alert.alert_status
       controlsState.alertBlinkingRate = current_alert.alert_rate
       controlsState.alertType = current_alert.alert_type
-      controlsState.alertSound = current_alert.audible_alert
+      #controlsState.alertSound = current_alert.audible_alert
 
     controlsState.longitudinalPlanMonoTime = self.sm.logMonoTime['longitudinalPlan']
     controlsState.lateralPlanMonoTime = self.sm.logMonoTime['modelV2']
